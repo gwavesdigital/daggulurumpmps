@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // Header & Top Ribbon Injection with Responsive Hamburger Menu & Dynamic Install Button
     const headerHTML = `
         <a href="https://wa.me/919666766688" class="whatsapp-float" target="_blank" title="Chat with Head Master">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448c-1.805.992-3.86 1.517-5.946 1.518h-.005zm12.987-20.916c-5.464 0-9.914 4.45-9.917 9.916-.001 1.744.457 3.454 1.325 4.957l-.924 3.376 3.453-.906c1.447.788 3.102 1.203 4.793 1.204h.004c5.463 0 9.913-4.45 9.916-9.916.002-2.651-1.031-5.143-2.903-7.017-1.873-1.875-4.363-2.911-7.014-2.911zm5.441 14.238c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.346.222-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.458.13-.605.134-.133.297-.346.445-.52.148-.174.198-.297.297-.495.099-.198.05-.372-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.489-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.573-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.569-.347z"/></svg>
@@ -9,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="top-bar">
             <div class="top-bar-left">
                 <span>📍 దగ్గులూరు, పాలకొల్లు మండలం</span>
-                <!-- Initially hidden, shows only when PWA prompt is ready, hides after install -->
                 <button id="installBtn" class="install-app-btn" onclick="installApp()" style="display: none;">📲 Install App</button>
             </div>
         </div>
@@ -17,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <header>
             <div class="navbar">
                 <div class="logo-container">
+                    <a href="index.html" class="home-icon-btn" title="Home">🏠</a>
                     <img src="images/ap-emblem.png" alt="AP Govt Logo" class="ap-logo">
                     <div class="logo-area">
                         <h1>ఎం.పి. మోడల్ ప్రైమరీ స్కూల్</h1>
@@ -24,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                 </div>
 
-                <!-- Hamburger Menu Toggle Button for Mobile -->
                 <div class="menu-toggle" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
@@ -47,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
         </header>
     `;
 
-    // Footer & Map Injection
     const footerHTML = `
         <footer>
             <div class="footer-content">
@@ -74,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         </footer>
 
-        <!-- VALIASS Popup Modal -->
         <div class="modal-overlay" id="contactModal">
             <div class="modal-box">
                 <div class="modal-header-banner">
@@ -97,22 +92,17 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 });
 
-// Toggle Mobile Hamburger Menu
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');
 }
 
-// PWA Install Logic (Direct Prompt & Auto-Hide on Success)
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // Show install button when app is installable
     const installBtn = document.getElementById('installBtn');
-    if (installBtn) {
-        installBtn.style.display = 'inline-flex';
-    }
+    if (installBtn) { installBtn.style.display = 'inline-flex'; }
 });
 
 function installApp() {
@@ -120,8 +110,6 @@ function installApp() {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-                // Hide button after successful installation
                 document.getElementById('installBtn').style.display = 'none';
             }
             deferredPrompt = null;
@@ -129,22 +117,15 @@ function installApp() {
     }
 }
 
-// Hide install button if app is already running in standalone mode (Installed)
 window.addEventListener('appinstalled', (evt) => {
-    console.log('App was successfully installed');
     const installBtn = document.getElementById('installBtn');
-    if (installBtn) {
-        installBtn.style.display = 'none';
-    }
+    if (installBtn) { installBtn.style.display = 'none'; }
 });
 
-// Check if already in standalone mode on load
 if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     window.addEventListener('DOMContentLoaded', () => {
         const installBtn = document.getElementById('installBtn');
-        if (installBtn) {
-            installBtn.style.display = 'none';
-        }
+        if (installBtn) { installBtn.style.display = 'none'; }
     });
 }
 
@@ -155,7 +136,6 @@ window.onclick = function(event) {
     if (event.target == modal) { modal.style.display = 'none'; }
 }
 
-// Service Worker Registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
