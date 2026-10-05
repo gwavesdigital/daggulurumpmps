@@ -1,0 +1,15 @@
+{
+  "name": "MP Model Primary School Dagguluru",
+  "short_name": "MPPS Dagguluru",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#F4F7F2",
+  "theme_color": "#2E4F2F",
+  "icons": [
+    {
+      "src": "images/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
