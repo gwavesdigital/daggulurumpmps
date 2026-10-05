@@ -7,56 +7,14 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2E4F2F">
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root { --primary-green: #2E4F2F; --secondary-green: #3B6E3B; --accent-brown: #8C6239; --light-bg: #F4F7F2; --text-dark: #222222; --gold: #D4AF37; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
-        .top-bar { background-color: var(--primary-green); color: white; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 10px; }
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .install-app-btn { background: linear-gradient(135deg, #D4AF37, #AA7C11); color: #000; border: none; padding: 5px 14px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 12px; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9998; text-decoration: none; }
-        .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
-        header { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; flex-wrap: wrap; }
-        .logo-container { display: flex; align-items: center; gap: 12px; }
-        .ap-logo { width: 50px; height: 50px; object-fit: contain; }
-        .logo-area h1 { font-size: 17px; color: var(--primary-green); }
-        .logo-area p { font-size: 11px; color: var(--accent-brown); }
-        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { background-color: var(--primary-green); color: white; }
-        
-        .page-banner { background: linear-gradient(rgba(46,79,47,0.85), rgba(46,79,47,0.85)), url('images/school-banner.jpg'); background-size: cover; background-position: center; color: white; text-align: center; padding: 60px 20px; }
-        .page-banner h2 { font-size: 32px; color: var(--gold); margin-bottom: 10px; }
-        
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-green); text-align: center; }
         .teacher-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--primary-green); }
         .card h3 { color: var(--primary-green); margin-bottom: 5px; font-size: 19px; }
         .card p.role { color: var(--accent-brown); font-weight: bold; margin-bottom: 12px; font-size: 13px; }
         .card p.desc { font-size: 13px; color: #555; }
-
-        footer { background-color: #162616; color: white; padding: 40px 20px 20px 20px; margin-top: 50px; }
-        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .footer-section h3 { color: var(--gold); margin-bottom: 15px; font-size: 18px; border-bottom: 2px solid var(--secondary-green); padding-bottom: 5px; }
-        .footer-section p { font-size: 13px; margin-bottom: 8px; color: #ddd; }
-        .map-frame { width: 100%; height: 150px; border: none; border-radius: 5px; }
-        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 15px; font-size: 12px; color: #aaa; }
-        .brand-credit { color: var(--gold); font-weight: bold; cursor: pointer; }
-
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 30, 15, 0.75); z-index: 10000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal-box { background: #ffffff; color: #222; width: 350px; border-radius: 20px; text-align: center; position: relative; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); overflow: hidden; border: 1px solid rgba(46, 79, 47, 0.15); }
-        .modal-header-banner { background: linear-gradient(135deg, #2E4F2F, #3B6E3B); color: white; padding: 25px 20px 20px 20px; position: relative; }
-        .modal-icon-badge { width: 55px; height: 55px; background: white; color: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 10px auto; }
-        .modal-header-banner h3 { font-size: 18px; color: var(--gold); font-weight: 700; }
-        .modal-body-content { padding: 20px; }
-        .modal-body-content p { font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 20px; }
-        .modal-actions { display: flex; gap: 12px; justify-content: center; }
-        .action-btn { flex: 1; padding: 11px 15px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .call-btn { background: linear-gradient(135deg, #007bff, #0056b3); }
-        .wa-btn { background: linear-gradient(135deg, #25D366, #1ebe57); }
-        .close-modal { position: absolute; top: 12px; right: 15px; font-size: 20px; cursor: pointer; color: rgba(255,255,255,0.8); background: rgba(0,0,0,0.2); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
