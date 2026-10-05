@@ -19,10 +19,23 @@
         .slide-content h2 { font-size: 26px; margin-bottom: 10px; color: var(--gold); }
         .btn { background-color: var(--accent-brown); color: white; padding: 8px 20px; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 10px; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
+        
         .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+        
         .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-green); }
         .card h3 { color: var(--primary-green); margin-bottom: 10px; font-size: 18px; }
+
+        /* Class Strength Table / Cards Styling with Total Highlight */
+        .strength-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 20px; }
+        .strength-card { background: #f9fbf9; border: 1px solid #d4ebd4; padding: 15px; border-radius: 8px; text-align: center; }
+        .strength-card h4 { color: var(--primary-green); font-size: 15px; margin-bottom: 5px; }
+        .strength-card p { font-size: 17px; font-weight: bold; color: var(--accent-brown); margin: 0; }
+        
+        /* Total Highlight Card */
+        .strength-card.total-card { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid var(--primary-green); }
+        .strength-card.total-card h4 { color: var(--primary-green); font-weight: bold; }
+        .strength-card.total-card p { color: var(--primary-green); font-size: 19px; }
     </style>
 </head>
 <body>
@@ -45,7 +58,7 @@
     </div>
 
     <div class="container">
-        <h2 style="text-align: center; color: var(--primary-green); margin: 20px 0;">పాఠశాల ముఖ్యాంశాలు</h2>
+        <h2 style="text-align: center; color: var(--primary-green); margin-bottom: 20px;">పాఠశాల ముఖ్యాంశాలు</h2>
         <div class="grid-3">
             <div class="card">
                 <h3>ప్రధానోపాధ్యాయులు</h3>
@@ -58,6 +71,38 @@
             <div class="card">
                 <h3>డిజిటల్ మన బడి</h3>
                 <p>ప్రభుత్వ బడులలో టెక్నాలజీ విప్లవంతో మెరుగైన బోధన మరియు స్మార్ట్ లెర్నింగ్ అందించడం మా లక్ష్యం.</p>
+            </div>
+        </div>
+
+        <!-- Class Strength Details Section with Total Highlight -->
+        <div class="content-box" style="margin-top: 40px;">
+            <h3>తరగతుల వారీగా విద్యార్థుల సంఖ్య (Class Strength)</h3>
+            <p>మా పాఠశాలలో ప్రాథమిక విద్య అభ్యసిస్తున్న విద్యార్థుల వివరాలు:</p>
+            <div class="strength-grid">
+                <div class="strength-card">
+                    <h4>1వ తరగతి</h4>
+                    <p>17 మంది</p>
+                </div>
+                <div class="strength-card">
+                    <h4>2వ తరగతి</h4>
+                    <p>21 మంది</p>
+                </div>
+                <div class="strength-card">
+                    <h4>3వ తరగతి</h4>
+                    <p>23 మంది</p>
+                </div>
+                <div class="strength-card">
+                    <h4>4వ తరగతి</h4>
+                    <p>17 మంది</p>
+                </div>
+                <div class="strength-card">
+                    <h4>5వ తరగతి</h4>
+                    <p>11 మంది</p>
+                </div>
+                <div class="strength-card total-card">
+                    <h4>మొత్తం విద్యార్థులు</h4>
+                    <p>89 మంది</p>
+                </div>
             </div>
         </div>
     </div>
