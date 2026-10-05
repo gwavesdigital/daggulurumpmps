@@ -1,14 +1,11 @@
 // Dynamic Header, Footer, Map & Global Elements Injector
 document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. Top Green Ribbon & Header (Injected at the top of body)
+    // Header & Top Ribbon Injection
     const headerHTML = `
-        <!-- Original Official WhatsApp Floating Button -->
         <a href="https://wa.me/919666766688" class="whatsapp-float" target="_blank" title="Chat with Head Master">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448c-1.805.992-3.86 1.517-5.946 1.518h-.005zm12.987-20.916c-5.464 0-9.914 4.45-9.917 9.916-.001 1.744.457 3.454 1.325 4.957l-.924 3.376 3.453-.906c1.447.788 3.102 1.203 4.793 1.204h.004c5.463 0 9.913-4.45 9.916-9.916.002-2.651-1.031-5.143-2.903-7.017-1.873-1.875-4.363-2.911-7.014-2.911zm5.441 14.238c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.346.222-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.458.13-.605.134-.133.297-.346.445-.52.148-.174.198-.297.297-.495.099-.198.05-.372-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.489-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.573-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.569-.347z"/></svg>
         </a>
-
-        <!-- Top Green Ribbon -->
         <div class="top-bar">
             <div class="top-bar-left">
                 <span>📍 దగ్గులూరు, పాలకొల్లు మండలం</span>
@@ -18,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 <button class="premium-translate-btn" onclick="triggerTranslate()">🌐 English / తెలుగు</button>
             </div>
         </div>
-
         <header>
             <div class="navbar">
                 <div class="logo-container">
@@ -44,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </header>
     `;
 
-    // 2. Standard Footer with Exact School Map (Injected at the bottom of body)
+    // Footer & Map Injection
     const footerHTML = `
         <footer>
             <div class="footer-content">
@@ -65,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.948050016019!2d81.66499657505977!3d16.528720126973397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37d1134e74c66d%3A0x55708d80a13e87f2!2sMPPS%20NO%20%3A%201%20SCHOOL!5e0!3m2!1sen!2sin!4v1791197584994!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2026 ఎం.పి. మోడల్ ప్రైమరీ స్కూల్, దగ్గులూరు. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.</p>
                 <p>An Initiative of <span class="brand-credit" onclick="openModal()">@VALIASS team</span></p>
@@ -91,13 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     `;
 
-    // Inject header at the very beginning of body
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
-    // Inject footer & modal at the very end of body
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 });
 
-// Global Translate & PWA Install Functions
+// Global Functions
 function triggerTranslate() {
     let cookies = document.cookie.split(';');
     let currentLang = 'te';
@@ -126,7 +119,7 @@ function installApp() {
             deferredPrompt = null;
         });
     } else {
-        alert('మీ బ్రౌజర్ మెనూ (...) నుండి "Add to Home screen" లేదా "Install App" సెలెక్ట్ చేయండి!');
+        alert('యాప్ ఇన్‌స్టాల్ చేయడానికి బ్రౌజర్ మెనూ (...) నుండి "Add to Home screen" లేదా "Install App" సెలెక్ట్ చేయండి!');
     }
 }
 
