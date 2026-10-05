@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <header>
             <div class="navbar">
-                <!-- Emblem & Name wrapped inside a link to go to Home -->
+                <!-- Desktop & Mobile: Clicking logo goes to Home, NO extra home button here -->
                 <a href="index.html" class="logo-container" style="text-decoration: none;">
                     <img src="images/ap-emblem.png" alt="AP Govt Logo" class="ap-logo">
                     <div class="logo-area">
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                 </a>
 
-                <!-- Right side controls for Mobile: Premium Home Button & Hamburger Menu -->
+                <!-- Mobile Only: Premium Home Button next to Hamburger Menu -->
                 <div class="mobile-header-controls">
                     <a href="index.html" class="premium-home-btn" title="Home">🏠 హోమ్</a>
                     <div class="menu-toggle" onclick="toggleMenu()">
