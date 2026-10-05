@@ -99,26 +99,7 @@ header {
     display: flex !important; 
     align-items: center !important; 
     gap: 10px !important; 
-}
-
-/* Home Icon Button in Header (Visible on Mobile & Desktop) */
-.home-icon-btn { 
-    font-size: 18px !important; 
-    text-decoration: none !important; 
-    background: #e8f5e9 !important; 
-    width: 34px !important; 
-    height: 34px !important; 
-    border-radius: 50% !important; 
-    display: flex !important; 
-    align-items: center !important; 
-    justify-content: center !important; 
-    transition: background 0.2s !important; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; 
-    flex-shrink: 0 !important;
-}
-
-.home-icon-btn:hover { 
-    background: #c8e6c9 !important; 
+    cursor: pointer; 
 }
 
 .ap-logo { 
@@ -138,6 +119,27 @@ header {
 .logo-area p { 
     font-size: 10px !important; 
     color: var(--accent-brown) !important; 
+}
+
+/* Mobile Header Controls & Premium Home Button */
+.mobile-header-controls {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.premium-home-btn {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .nav-links { 
@@ -179,6 +181,9 @@ header {
 }
 
 @media (max-width: 1100px) {
+    .mobile-header-controls {
+        display: flex !important;
+    }
     .menu-toggle { display: flex !important; }
     .nav-links { 
         display: none !important; 
