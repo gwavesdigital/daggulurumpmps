@@ -13,19 +13,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <header>
             <div class="navbar">
-                <div class="logo-container">
-                    <a href="index.html" class="home-icon-btn" title="Home">🏠</a>
+                <!-- Emblem & Name wrapped inside a link to go to Home -->
+                <a href="index.html" class="logo-container" style="text-decoration: none;">
                     <img src="images/ap-emblem.png" alt="AP Govt Logo" class="ap-logo">
                     <div class="logo-area">
                         <h1>ఎం.పి. మోడల్ ప్రైమరీ స్కూల్</h1>
                         <p>స్థాపితం: 1922 | నెం.1 - దగ్గులూరు</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="menu-toggle" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <!-- Right side controls for Mobile: Premium Home Button & Hamburger Menu -->
+                <div class="mobile-header-controls">
+                    <a href="index.html" class="premium-home-btn" title="Home">🏠 హోమ్</a>
+                    <div class="menu-toggle" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
 
                 <ul class="nav-links" id="navLinks">
