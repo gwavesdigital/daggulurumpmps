@@ -5,398 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్ - దగ్గులూరు</title>
     <style>
-        :root {
-            --primary-green: #2E4F2F;
-            --secondary-green: #3B6E3B;
-            --accent-brown: #8C6239;
-            --light-bg: #F4F7F2;
-            --text-dark: #222222;
-            --gold: #D4AF37;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 8px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-        }
-
-        .lang-toggle button {
-            background: var(--gold);
-            color: #000;
-            border: none;
-            padding: 4px 12px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-            transition: 0.3s;
-        }
-
-        .lang-toggle button:hover { opacity: 0.9; }
-
-        /* Right Side Social Ribbon */
-        .right-social-ribbon {
-            position: fixed;
-            top: 45%;
-            right: -55px;
-            transform: translateY(-50%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            transition: right 0.4s ease;
-        }
-
-        .right-social-ribbon:hover { right: 0; }
-
-        .right-social-ribbon::before {
-            content: "❮";
-            position: absolute;
-            left: -22px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--primary-green);
-            color: white;
-            padding: 10px 4px;
-            border-radius: 4px 0 0 4px;
-            font-size: 11px;
-        }
-
-        .social-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px 0 0 10px;
-            box-shadow: -3px 3px 10px rgba(0,0,0,0.2);
-        }
-
-        .social-item svg { width: 22px; height: 22px; fill: white; }
-        .social-item.fb { background: #3b5998; }
-        .social-item.insta { background: #E1306C; }
-        .social-item.yt { background: #FF0000; }
-        .social-item.wa { background: #25D366; }
-
-        /* Floating WhatsApp Button */
+        :root { --primary-green: #2E4F2F; --secondary-green: #3B6E3B; --accent-brown: #8C6239; --light-bg: #F4F7F2; --text-dark: #222222; --gold: #D4AF37; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .top-bar { background-color: var(--primary-green); color: white; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .lang-toggle button { background: var(--gold); color: #000; border: none; padding: 4px 12px; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 12px; }
+        
+        /* Official WhatsApp Floating Button for Head Master */
         .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25D366;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            z-index: 9998;
-            text-decoration: none;
-            transition: transform 0.3s;
+            position: fixed; bottom: 25px; right: 25px;
+            background-color: #25D366; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9998; text-decoration: none;
+            transition: transform 0.3s ease;
         }
-
         .whatsapp-float:hover { transform: scale(1.1); }
-        .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
 
-        /* Header & Navigation Tabs */
-        header {
-            background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 5%;
-            flex-wrap: wrap;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        header { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; flex-wrap: wrap; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
         .ap-logo { width: 50px; height: 50px; object-fit: contain; }
-
         .logo-area h1 { font-size: 17px; color: var(--primary-green); }
         .logo-area p { font-size: 11px; color: var(--accent-brown); }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 13px;
-            font-weight: 600;
-            padding: 6px 10px;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background-color: var(--primary-green);
-            color: white;
-        }
-
-        /* Hero Slider */
-        .hero-slider {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            transition: opacity 1s ease-in-out;
-        }
-
+        .nav-links { display: flex; list-style: none; gap: 12px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { background-color: var(--primary-green); color: white; }
+        
+        .hero-slider { position: relative; width: 100%; height: 400px; overflow: hidden; background: #000; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white; transition: opacity 1s ease-in-out; }
         .slide.active { opacity: 1; }
-
-        .slide-content {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 25px;
-            border-radius: 10px;
-            max-width: 750px;
-            border-left: 5px solid var(--gold);
-        }
-
+        .slide-content { background: rgba(0, 0, 0, 0.6); padding: 25px; border-radius: 10px; max-width: 750px; border-left: 5px solid var(--gold); }
         .slide-content h2 { font-size: 26px; margin-bottom: 10px; color: var(--gold); }
-
-        .btn {
-            background-color: var(--accent-brown);
-            color: white;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        /* Container & Cards */
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 15px;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--primary-green);
-            margin: 30px 0 20px 0;
-            font-size: 24px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-green);
-        }
-
+        .btn { background-color: var(--accent-brown); color: white; padding: 8px 20px; border: none; border-radius: 4px; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 10px; }
+        
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 15px; }
+        .section-title { text-align: center; color: var(--primary-green); margin: 30px 0 20px 0; font-size: 24px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-green); }
         .card h3 { color: var(--primary-green); margin-bottom: 10px; font-size: 18px; }
 
-        /* Footer */
-        footer {
-            background-color: #162616;
-            color: white;
-            padding: 40px 20px 20px 20px;
-            margin-top: 50px;
-        }
-
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        @media (min-width: 768px) {
-            .footer-content { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .footer-section h3 {
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-size: 18px;
-            border-bottom: 2px solid var(--secondary-green);
-            padding-bottom: 5px;
-        }
-
+        footer { background-color: #162616; color: white; padding: 40px 20px 20px 20px; margin-top: 50px; }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 30px; }
+        @media (min-width: 768px) { .footer-content { grid-template-columns: repeat(3, 1fr); } }
+        .footer-section h3 { color: var(--gold); margin-bottom: 15px; font-size: 18px; border-bottom: 2px solid var(--secondary-green); padding-bottom: 5px; }
         .footer-section p { font-size: 13px; margin-bottom: 8px; color: #ddd; }
-
         .map-frame { width: 100%; height: 150px; border: none; border-radius: 5px; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 15px; font-size: 12px; color: #aaa; }
+        .brand-credit { color: var(--gold); font-weight: bold; cursor: pointer; display: inline-block; }
 
-        .footer-bottom {
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 30px;
-            padding-top: 15px;
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        .brand-credit {
-            color: var(--gold);
-            font-weight: bold;
-            margin-top: 5px;
-            cursor: pointer;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        .brand-credit:hover { transform: scale(1.05); text-decoration: underline; }
-
-        /* Popup Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-box {
-            background: white;
-            color: #222;
-            padding: 25px;
-            border-radius: 12px;
-            width: 320px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            position: relative;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-box h3 { color: var(--primary-green); margin-bottom: 10px; font-size: 18px; }
-        .modal-box p { font-size: 13px; color: #666; margin-bottom: 20px; }
-
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            color: white;
-        }
-
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; justify-content: center; align-items: center; }
+        .modal-box { background: white; color: #222; padding: 25px; border-radius: 12px; width: 320px; text-align: center; position: relative; }
+        .modal-actions { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+        .action-btn { flex: 1; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; color: white; display: flex; align-items: center; justify-content: center; gap: 5px; }
         .call-btn { background-color: #007bff; }
         .wa-btn { background-color: #25D366; }
-
-        .close-modal {
-            position: absolute;
-            top: 10px; right: 15px;
-            font-size: 20px;
-            cursor: pointer;
-            color: #aaa;
-        }
-        .close-modal:hover { color: #000; }
+        .close-modal { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; color: #aaa; }
     </style>
 </head>
 <body>
 
-    <!-- Right-Side Social Ribbon -->
-    <div class="right-social-ribbon">
-        <a href="#" class="social-item fb"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        <a href="#" class="social-item insta"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="#" class="social-item yt"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-        <a href="#" class="social-item wa"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448c-1.805.992-3.86 1.517-5.946 1.518h-.005zm12.987-20.916c-5.464 0-9.914 4.45-9.917 9.916-.001 1.744.457 3.454 1.325 4.957l-.924 3.376 3.453-.906c1.447.788 3.102 1.203 4.793 1.204h.004c5.463 0 9.913-4.45 9.916-9.916.002-2.651-1.031-5.143-2.903-7.017-1.873-1.875-4.363-2.911-7.014-2.911zm5.441 14.238c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.346.222-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.458.13-.605.134-.133.297-.346.445-.52.148-.174.198-.297.297-.495.099-.198.05-.372-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.489-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.573-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.569-.347z"/></svg></a>
-    </div>
-
-    <!-- Floating WhatsApp Button (8985361991) -->
-    <a href="https://wa.me/918985361991" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <!-- Floating WhatsApp Button linked to Head Master (9666766688) with official SVG -->
+    <a href="https://wa.me/919666766688" class="whatsapp-float" target="_blank" title="Chat with Head Master">
         <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448c-1.805.992-3.86 1.517-5.946 1.518h-.005zm12.987-20.916c-5.464 0-9.914 4.45-9.917 9.916-.001 1.744.457 3.454 1.325 4.957l-.924 3.376 3.453-.906c1.447.788 3.102 1.203 4.793 1.204h.004c5.463 0 9.913-4.45 9.916-9.916.002-2.651-1.031-5.143-2.903-7.017-1.873-1.875-4.363-2.911-7.014-2.911zm5.441 14.238c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.346.222-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.458.13-.605.134-.133.297-.346.445-.52.148-.174.198-.297.297-.495.099-.198.05-.372-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.489-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.573-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.569-.347z"/></svg>
     </a>
 
-    <!-- Top Bar -->
     <div class="top-bar">
         <div>📍 దగ్గులూరు, పాలకొల్లు మండలం, పశ్చిమ గోదావరి జిల్లా</div>
-        <div class="lang-toggle">
-            <button onclick="toggleLanguage()">English / తెలుగు</button>
-        </div>
+        <div class="lang-toggle"><button>English / తెలుగు</button></div>
     </div>
 
-    <!-- Header & 10 Navigation Tabs -->
     <header>
         <div class="navbar">
             <div class="logo-container">
-                <img src="images/ap-emblem.png" alt="AP Govt Logo" class="ap-logo">
+                <img src="images/ap-emblem.svg" alt="AP Govt Logo" class="ap-logo">
                 <div class="logo-area">
-                    <h1 id="t-schoolname">ఎం.పి. మోడల్ ప్రైమరీ స్కూల్</h1>
+                    <h1>ఎం.పి. మోడల్ ప్రైమరీ స్కూల్</h1>
                     <p>స్థాపితం: 1922 | నెం.1 - దగ్గులూరు</p>
                 </div>
             </div>
@@ -415,16 +100,15 @@
         </div>
     </header>
 
-    <!-- Hero Slider -->
     <div class="hero-slider">
-        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80');">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/school-banner.jpg');">
             <div class="slide-content">
                 <h2>మీ చిన్నారుల బంగారు భవిష్యత్తుకు పునాది!</h2>
                 <p>సుమారు 104 ఏళ్ల చరిత్ర కలిగిన మన ప్రభుత్వ మోడల్ బడి.</p>
                 <a href="contact.html" class="btn">అడ్మిషన్ల వివరాలు</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80');">
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/digital-class.jpg');">
             <div class="slide-content">
                 <h2>కార్పొరేట్ వసతులు & డిజిటల్ విద్య</h2>
                 <p>ఎల్.ఇ.డి టీవీలు, ఆర్.ఓ ప్లాంట్ మరియు కిచెన్ గార్డెన్‌తో కూడిన ఉత్తమ వాతావరణం.</p>
@@ -433,7 +117,6 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
         <h2 class="section-title">పాఠశాల ముఖ్యాంశాలు</h2>
         <div class="grid-3">
@@ -452,7 +135,6 @@
         </div>
     </div>
 
-    <!-- Professional Footer with Brand & Popup Trigger -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -461,32 +143,28 @@
                 <p>దగ్గులూరు, పాలకొల్లు మండలం, పశ్చిమ గోదావరి జిల్లా - 534260</p>
                 <p>📞 హెడ్ మాస్టర్: <strong>9666766688</strong></p>
             </div>
-            
             <div class="footer-section">
                 <h3>క్విక్ లింక్స్</h3>
                 <p><a href="about.html" style="color:#ddd; text-decoration:none;">మా గురించి & చరిత్ర</a></p>
                 <p><a href="digital-mana-badi.html" style="color:#ddd; text-decoration:none;">డిజిటల్ మన బడి కాన్సెప్ట్</a></p>
                 <p><a href="contact.html" style="color:#ddd; text-decoration:none;">గూగుల్ మ్యాప్ & కాంటాక్ట్</a></p>
             </div>
-
             <div class="footer-section">
                 <h3>లొకేషన్</h3>
                 <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.7!2d81.7!3d16.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDMwJzAwLjAiTiA4McKwNDInMDAuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
-        
         <div class="footer-bottom">
             <p>&copy; 2026 ఎం.పి. మోడల్ ప్రైమరీ స్కూల్, దగ్గులూరు. సర్వ హక్కులు ప్రత్యేకించబడ్డాయి.</p>
             <p>An Initiative of <span class="brand-credit" onclick="openModal()">@VALIASS team</span></p>
         </div>
     </footer>
 
-    <!-- Popup Modal for Brand Contact -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal-box">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3>VALIASS Team Support</h3>
-            <p>మా టెక్నికల్ సపోర్ట్ టీమ్‌ను సంప్రదಿಸಲು కింద ఉన్న ఆప్షన్లలో ఒకదానిని ఎంచుకోండి:</p>
+            <p>మా టెక్నికల్ సపోర్ట్ టీమ్‌ను సంప్రదించండి:</p>
             <div class="modal-actions">
                 <a href="tel:8985361991" class="action-btn call-btn">📞 Call Now</a>
                 <a href="https://wa.me/918985361991" target="_blank" class="action-btn wa-btn">💬 WhatsApp</a>
@@ -494,9 +172,7 @@
         </div>
     </div>
 
-    <!-- JavaScript for Slider, Language Toggle & Popup -->
     <script>
-        // Hero Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         function nextSlide() {
@@ -506,31 +182,11 @@
         }
         setInterval(nextSlide, 4500);
 
-        // Language Toggle Basic Logic
-        let isTelugu = true;
-        function toggleLanguage() {
-            isTelugu = !isTelugu;
-            const title = document.getElementById('t-schoolname');
-            if(isTelugu) {
-                title.innerText = "ఎం.పి. మోడల్ ప్రైమరీ స్కూల్";
-            } else {
-                title.innerText = "M.P. Model Primary School";
-            }
-        }
-
-        // Popup Modal Functions
-        function openModal() {
-            document.getElementById('contactModal').style.display = 'flex';
-        }
-        function closeModal() {
-            document.getElementById('contactModal').style.display = 'none';
-        }
-        // Close modal when clicking outside the box
+        function openModal() { document.getElementById('contactModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('contactModal').style.display = 'none'; }
         window.onclick = function(event) {
             let modal = document.getElementById('contactModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
+            if (event.target == modal) { modal.style.display = 'none'; }
         }
     </script>
 </body>
