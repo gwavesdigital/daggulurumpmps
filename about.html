@@ -19,8 +19,9 @@
         .goog-te-banner-frame, .goog-te-gadget span, .goog-logo-link { display: none !important; }
         .goog-te-gadget { color: transparent !important; font-size: 0px !important; }
         body { top: 0 !important; }
-        .goog-te-combo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9998; text-decoration: none; }
+        .goog-te-combo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; pointer-events: auto; }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9998; text-decoration: none; transition: transform 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); }
         .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
         header { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; flex-wrap: wrap; }
@@ -43,7 +44,8 @@
         .footer-section p { font-size: 13px; margin-bottom: 8px; color: #ddd; }
         .map-frame { width: 100%; height: 150px; border: none; border-radius: 5px; }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 15px; font-size: 12px; color: #aaa; }
-        .brand-credit { color: var(--gold); font-weight: bold; cursor: pointer; display: inline-block; }
+        .brand-credit { color: var(--gold); font-weight: bold; cursor: pointer; display: inline-block; transition: transform 0.2s; }
+        .brand-credit:hover { transform: scale(1.08); text-decoration: underline; }
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 30, 15, 0.75); z-index: 10000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
         .modal-box { background: #ffffff; color: #222; width: 350px; border-radius: 20px; text-align: center; position: relative; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); overflow: hidden; border: 1px solid rgba(46, 79, 47, 0.15); }
         .modal-header-banner { background: linear-gradient(135deg, #2E4F2F, #3B6E3B); color: white; padding: 25px 20px 20px 20px; position: relative; }
@@ -122,7 +124,7 @@
             </div>
             <div class="footer-section">
                 <h3>లొకేషన్</h3>
-                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.7!2d81.7!3d16.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDMwJzAwLjAiTiA4McKwNDInMDAuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.948050016019!2d81.66499657505977!3d16.528720126973397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37d1134e74c66d%3A0x55708d80a13e87f2!2sMPPS%20NO%20%3A%201%20SCHOOL!5e0!3m2!1sen!2sin!4v1791197584994!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
         <div class="footer-bottom">
@@ -150,18 +152,18 @@
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'te', includedLanguages: 'en,te', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
         }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
         function triggerTranslate() {
             let selectBox = document.querySelector('.goog-te-combo');
             if (selectBox) {
-                selectBox.click();
-                let event = document.createEvent('MouseEvents');
-                event.initMouseEvent('mousedown', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                if (selectBox.value === 'te') { selectBox.value = 'en'; } else { selectBox.value = 'te'; }
+                let event = document.createEvent('HTMLEvents');
+                event.initEvent('change', true, true);
                 selectBox.dispatchEvent(event);
-            }
+            } else { alert('ట్రాన్స్‌లేట్ ఇంకా లోడ్ అవుతోంది, క్షణం ఆగండి!'); }
         }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
