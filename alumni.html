@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>పూర్వ విద్యార్థులు - మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్, దగ్గులూరు</title>
+    <title>పూర్వ విద్యార్థుల వేదిక - మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్, దగ్గులూరు</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2E4F2F">
@@ -15,24 +15,78 @@
         .page-banner h2 { font-size: 32px; color: var(--gold); margin-bottom: 10px; }
         .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
         .content-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 6px solid var(--primary-green); }
-        .content-box h3 { color: var(--primary-green); margin-bottom: 15px; font-size: 22px; }
-        .content-box p { margin-bottom: 12px; font-size: 15px; color: #444; }
+        .content-box h3 { color: var(--primary-green); margin-bottom: 15px; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+        .content-box p { margin-bottom: 15px; font-size: 15px; color: #444; text-align: justify; }
+        
+        .quote-box { background: #fdfae5; border-left: 5px solid var(--gold); padding: 20px; border-radius: 6px; margin: 20px 0; font-style: italic; color: #553; font-size: 16px; text-align: center; }
+        
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
+        .action-card { background: #f9fbf9; border: 1px solid #d4ebd4; padding: 20px; border-radius: 8px; text-align: center; transition: transform 0.2s; }
+        .action-card:hover { transform: translateY(-5px); }
+        .action-icon { font-size: 35px; margin-bottom: 10px; }
+        .action-card h4 { color: var(--primary-green); margin-bottom: 8px; font-size: 18px; }
+        .action-card p { font-size: 13px; color: #666; margin-bottom: 15px; }
+
+        .connect-btn { background: linear-gradient(135deg, #25D366, #1ebe57); color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
+        .connect-btn:hover { opacity: 0.95; }
     </style>
 </head>
 <body>
 
     <div class="page-banner">
-        <h2>పూర్వ విద్యార్థుల వేదిక (Alumni)</h2>
-        <p>మన పాఠశాలలో చదివి దేశవిదేశాల్లో స్థిరపడిన పూర్వ విద్యార్థుల వివరాలు</p>
+        <h2>పూర్వ విద్యార్థుల స్పూర్తి వేదిక</h2>
+        <p>మన బడి రుణం తీర్చుకుందాం - భావి తరాల భవిష్యత్తుకు బాటలు వేద్దాం</p>
     </div>
 
     <div class="container">
+        
+        <!-- Emotional Welcome Box -->
         <div class="content-box">
-            <h3>పూర్వ విద్యార్థుల ఆత్మీయ కలయిక</h3>
-            <p>100 సంవత్సరాలకు పైగా చరిత్ర కలిగిన ఈ పాఠశాలలో ప్రాథమిక విద్యనభ్యసించిన ఎంతోమంది విద్యార్థులు ఉన్నత స్థానాల్లో సేవలందిస్తున్నారు. పాఠశాల అభివృద్ధిలో పూర్వ విద్యార్థులు తమ వంతు సహకారం అందిస్తున్నారు.</p>
+            <h3>🌱 మా బడి... మా అమ్మ ఒడి!</h3>
+            <p>పశ్చిమ గోదావరి జిల్లా, పాలకొల్లు మండలం, దగ్గులూరు గ్రామంలో 1922 సంవత్సరంలో అంకురార్పణ జరుపుకున్న మన <strong>మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్</strong> కేవలం అక్షరాలు నేర్పే బడి మాత్రమే కాదు... మన జీవితానికి తొలి పునాది వేసిన దేవాలయం.</p>
+            <p>ఇక్కడ నేర్చుకున్న అక్షరాలు, ఆడుకున్న ఆటలు, గురువుల దీవెనలు మనల్ని ఈరోజు సమాజంలో ఉన్నత స్థానాల్లో నిలబెట్టాయి. మనం ఎక్కడున్నా, ఏ స్థితిలో ఉన్నా మనల్ని తీర్చిదిద్దిన మాతృసమానమైన మన పాఠశాలకు తిరిగి ఏదో ఒకటి చేయాలనే తపన ప్రతి ఒక్కరిలో ఉంటుంది.</p>
+            
+            <div class="quote-box">
+                "మనం పుట్టి పెరిగిన ఊరికి, మనల్ని ప్రయోజకులను చేసిన పాఠశాలకు కృతజ్ఞతగా సేవ చేయడం కంటే గొప్ప భాగ్యము మరొకటి లేదు."
+            </div>
         </div>
+
+        <!-- How to Contribute / Give Back -->
+        <div class="content-box">
+            <h3>🤝 పాఠశాల అభివృద్ధికి పూర్వ విద్యార్థుల భాగస్వామ్యం</h3>
+            <p>మన పాఠశాలలో చదువుకుంటున్న పేద మరియు మధ్యతరగతి గ్రామీణ విద్యార్థుల ఉజ్వల భవిష్యత్తు కోసం పూర్వ విద్యార్థులుగా మన వంతు బాధ్యతగా క్రింది కార్యక్రమాలలో పాలుపంచుకోవచ్చు:</p>
+            
+            <div class="grid-cards">
+                <div class="action-card">
+                    <div class="action-icon">📚</div>
+                    <h4>విద్యాలయానికి పుస్తకాలు & వస్తువులు</h4>
+                    <p>గ్రంథాలయానికి కావలసిన పుస్తకాలు, నోట్‌బుక్స్, లేదా పాఠశాలకు అవసరమైన డిజిటల్ లెర్నింగ్ పరికరాలను సమకూర్చవచ్చు.</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">💡</div>
+                    <h4>ప్రేరణాత్మక తరగతులు (Mentorship)</h4>
+                    <p>సందర్భానుసారం పాఠశాలను సందర్శించి, చిన్నారులకు ఉన్నత చదువులు మరియు కెరీర్ గురించి మార్గదర్శకత్వం, స్పూర్తినివ్వవచ్చు.</p>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">🍲</div>
+                    <h4>పోషకాహారం & మధ్యాహ్న భోజన సహకారం</h4>
+                    <p>చిన్నారుల ఆరోగ్య బలం కోసం పాఠశాల మధ్యాహ్న భోజనంలో ప్రత్యేక పోషకాహార వితరణలో భాగస్వాములు కావచ్చు.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action / Head Master Connection -->
+        <div class="content-box" style="text-align: center; background: #f4f9f4;">
+            <h3>✨ మీ ఆలోచనలను మాతో పంచుకోండి</h3>
+            <p>మీరు మన పాఠశాల కోసం ఏదైనా మంచి కార్యక్రమం చేయాలని తలచినా, లేదా మీ జ్ఞాపకాలను మాతో పంచుకోవాలనుకున్నా నేరుగా మన ప్రధానోపాధ్యాయులను సంప్రదించండి.</p>
+            <a href="https://wa.me/919666766688?text=నమస్కారం సర్, నేను మన దగ్గులూరు స్కూల్ పూర్వ విద్యార్థిని. స్కూల్ కోసం..." class="connect-btn" target="_blank">
+                💬 హెడ్ మాస్టర్‌‌గారితో వాట్సాప్‌లో మాట్లాడండి
+            </a>
+        </div>
+
     </div>
 
+    <!-- Centralized Script -->
     <script src="components.js"></script>
 </body>
 </html>
