@@ -1,0 +1,420 @@
+:root { 
+    --primary-green: #2E4F2F; 
+    --secondary-green: #3B6E3B; 
+    --accent-brown: #8C6239; 
+    --light-bg: #F4F7F2; 
+    --text-dark: #222222; 
+    --gold: #D4AF37; 
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    background-color: var(--light-bg); 
+    color: var(--text-dark); 
+    line-height: 1.6; 
+}
+
+/* Top Bar & Header Styles */
+.top-bar { 
+    background-color: var(--primary-green); 
+    color: white; 
+    padding: 8px 5%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    font-size: 13px; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+.top-bar-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    flex-wrap: wrap; 
+}
+
+.install-app-btn { 
+    background: linear-gradient(135deg, #D4AF37, #AA7C11); 
+    color: #000; 
+    border: none; 
+    padding: 5px 14px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 12px; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 5px; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); 
+}
+
+.whatsapp-float { 
+    position: fixed; 
+    bottom: 25px; 
+    right: 25px; 
+    background-color: #25D366; 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+    z-index: 9998; 
+    text-decoration: none; 
+}
+
+.whatsapp-float svg { 
+    width: 35px; 
+    height: 35px; 
+    fill: white; 
+}
+
+header { 
+    background: white !important; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; 
+    position: sticky !important; 
+    top: 0 !important; 
+    z-index: 1000 !important; 
+    width: 100% !important; 
+}
+
+.navbar { 
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
+    padding: 10px 5% !important; 
+    width: 100% !important; 
+    background: white !important; 
+}
+
+.logo-container { 
+    display: flex !important; 
+    align-items: center !important; 
+    gap: 10px !important; 
+}
+
+/* Home Icon Button in Header (Visible on Mobile & Desktop) */
+.home-icon-btn { 
+    font-size: 18px !important; 
+    text-decoration: none !important; 
+    background: #e8f5e9 !important; 
+    width: 34px !important; 
+    height: 34px !important; 
+    border-radius: 50% !important; 
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+    transition: background 0.2s !important; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; 
+    flex-shrink: 0 !important;
+}
+
+.home-icon-btn:hover { 
+    background: #c8e6c9 !important; 
+}
+
+.ap-logo { 
+    width: 45px !important; 
+    height: 45px !important; 
+    object-fit: contain !important; 
+    flex-shrink: 0 !important;
+}
+
+.logo-area h1 { 
+    font-size: 15px !important; 
+    color: var(--primary-green) !important; 
+    font-weight: 700 !important; 
+    line-height: 1.2 !important;
+}
+
+.logo-area p { 
+    font-size: 10px !important; 
+    color: var(--accent-brown) !important; 
+}
+
+.nav-links { 
+    display: flex !important; 
+    list-style: none !important; 
+    gap: 8px !important; 
+    align-items: center !important; 
+    margin: 0 !important; 
+    padding: 0 !important; 
+}
+
+.nav-links a { 
+    text-decoration: none !important; 
+    color: var(--text-dark) !important; 
+    font-size: 13px !important; 
+    font-weight: 600 !important; 
+    padding: 6px 10px !important; 
+    border-radius: 4px !important; 
+    transition: 0.3s !important; 
+}
+
+.nav-links a:hover, .nav-links a.active { 
+    background-color: var(--primary-green) !important; 
+    color: white !important; 
+}
+
+.menu-toggle { 
+    display: none !important; 
+    flex-direction: column !important; 
+    cursor: pointer !important; 
+    gap: 4px !important; 
+}
+
+.menu-toggle span { 
+    width: 24px !important; 
+    height: 3px !important; 
+    background-color: var(--primary-green) !important; 
+    border-radius: 3px !important; 
+}
+
+@media (max-width: 1100px) {
+    .menu-toggle { display: flex !important; }
+    .nav-links { 
+        display: none !important; 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        background: white !important; 
+        position: absolute !important; 
+        top: 100% !important; 
+        left: 0 !important; 
+        padding: 0 !important; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important; 
+        border-top: 1px solid #eee !important; 
+        max-height: 0 !important; 
+        overflow: hidden !important; 
+        transition: max-height 0.3s ease-in-out !important; 
+    }
+    .nav-links.active { 
+        display: flex !important; 
+        max-height: 500px !important; 
+        padding: 15px 20px !important; 
+    }
+    .nav-links li { 
+        width: 100% !important; 
+        text-align: left !important; 
+    }
+    .nav-links a { 
+        display: block !important; 
+        padding: 10px 0 !important; 
+        border-bottom: 1px solid #f4f7f2 !important; 
+    }
+}
+
+/* Common Layouts */
+.page-banner { 
+    background: linear-gradient(rgba(46,79,47,0.85), rgba(46,79,47,0.85)), url('images/school-banner.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    color: white; 
+    text-align: center; 
+    padding: 60px 20px; 
+}
+
+.page-banner h2 { 
+    font-size: 30px; 
+    color: var(--gold); 
+    margin-bottom: 8px; 
+}
+
+.page-banner p { 
+    font-size: 14px; 
+    color: #ddd; 
+}
+
+.container { 
+    max-width: 1000px; 
+    margin: 40px auto; 
+    padding: 0 20px; 
+}
+
+.content-box { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    margin-bottom: 30px; 
+    border-left: 6px solid var(--primary-green); 
+}
+
+.content-box h3 { 
+    color: var(--primary-green); 
+    margin-bottom: 15px; 
+    font-size: 21px; 
+}
+
+.content-box p { 
+    margin-bottom: 12px; 
+    font-size: 15px; 
+    color: #444; 
+}
+
+/* Footer Styles */
+footer { 
+    background-color: #162616; 
+    color: white; 
+    padding: 40px 20px 20px 20px; 
+    margin-top: 50px; 
+}
+
+.footer-content { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px; 
+}
+
+.footer-section h3 { 
+    color: var(--gold); 
+    margin-bottom: 15px; 
+    font-size: 18px; 
+    border-bottom: 2px solid var(--secondary-green); 
+    padding-bottom: 5px; 
+}
+
+.footer-section p { 
+    font-size: 13px; 
+    margin-bottom: 8px; 
+    color: #ddd; 
+}
+
+.map-frame { 
+    width: 100%; 
+    height: 150px; 
+    border: none; 
+    border-radius: 5px; 
+}
+
+.footer-bottom { 
+    text-align: center; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    margin-top: 30px; 
+    padding-top: 15px; 
+    font-size: 12px; 
+    color: #aaa; 
+}
+
+.brand-credit { 
+    color: var(--gold); 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+/* Modals */
+.modal-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(15, 30, 15, 0.75); 
+    z-index: 10000; 
+    justify-content: center; 
+    align-items: center; 
+    backdrop-filter: blur(5px); 
+}
+
+.modal-box { 
+    background: #ffffff; 
+    color: #222; 
+    width: 350px; 
+    border-radius: 20px; 
+    text-align: center; 
+    position: relative; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); 
+    overflow: hidden; 
+    border: 1px solid rgba(46, 79, 47, 0.15); 
+}
+
+.modal-header-banner { 
+    background: linear-gradient(135deg, #2E4F2F, #3B6E3B); 
+    color: white; 
+    padding: 25px 20px 20px 20px; 
+    position: relative; 
+}
+
+.modal-icon-badge { 
+    width: 55px; 
+    height: 55px; 
+    background: white; 
+    color: var(--primary-green); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 26px; 
+    margin: 0 auto 10px auto; 
+}
+
+.modal-header-banner h3 { 
+    font-size: 18px; 
+    color: var(--gold); 
+    font-weight: 700; 
+}
+
+.modal-body-content { 
+    padding: 20px; 
+}
+
+.modal-body-content p { 
+    font-size: 13px; 
+    color: #555; 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+}
+
+.modal-actions { 
+    display: flex; 
+    gap: 12px; 
+    justify-content: center; 
+}
+
+.action-btn { 
+    flex: 1; 
+    padding: 11px 15px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 13px; 
+    color: white; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 6px; 
+}
+
+.call-btn { 
+    background: linear-gradient(135deg, #007bff, #0056b3); 
+}
+
+.wa-btn { 
+    background: linear-gradient(135deg, #25D366, #1ebe57); 
+}
+
+.close-modal { 
+    position: absolute; 
+    top: 12px; 
+    right: 15px; 
+    font-size: 20px; 
+    cursor: pointer; 
+    color: rgba(255,255,255,0.8); 
+    background: rgba(0,0,0,0.2); 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
