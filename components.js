@@ -1,4 +1,3 @@
-// Dynamic Header, Footer, Map & Global Elements Injector
 document.addEventListener("DOMContentLoaded", function() {
     
     // Header & Top Ribbon Injection
@@ -72,12 +71,31 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="modal-icon-badge">🛠️</div>
                     <h3>VALIASS Team Support</h3>
                 </div>
-                <div class="modal-body-content">
+                    <div class="modal-body-content">
                     <p>డిజిటల్ మన బడి & వెబ్‌సైట్ సపోర్ట్ కొరకు మా టెక్నికల్ టీమ్‌ను సంప్రదించండి:</p>
                     <div class="modal-actions">
                         <a href="tel:8985361991" class="action-btn call-btn">📞 Call Now</a>
                         <a href="https://wa.me/918985361991" target="_blank" class="action-btn wa-btn">💬 WhatsApp</a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Install App Guide Modal -->
+        <div class="modal-overlay" id="installModal">
+            <div class="modal-box">
+                <div class="modal-header-banner">
+                    <span class="close-modal" onclick="closeInstallModal()">&times;</span>
+                    <div class="modal-icon-badge">📲</div>
+                    <h3>సొంత యాప్‌గా ఇన్‌స్టాల్ చేసుకోండి</h3>
+                </div>
+                <div class="modal-body-content" style="text-align: left;">
+                    <p style="margin-bottom: 10px;">ఈ వెబ్‌సైట్‌ను మీ మొబైల్ లేదా కంప్యూటర్ హోమ్ స్క్రీన్‌కి యాప్‌లా యాడ్ చేసుకోవడం చాలా సులువు:</p>
+                    <p style="font-size: 12px; color: #444; line-height: 1.6;">
+                        1. మీ బ్రౌజర్ పైభాగంలో ఉన్న <strong>మూడు చుక్కలు (...)</strong> లేదా మెనూ పై క్లిక్ చేయండి.<br>
+                        2. అందులో <strong>"Install App"</strong> లేదా <strong>"Add to Home screen"</strong> ఆప్షన్ సెలెక్ట్ చేయండి.<br>
+                        3. అంతే! మీ ఫోన్ స్క్రీన్ పై మన స్కూల్ యాప్ ఐకాన్ వచ్చేస్తుంది.
+                    </p>
                 </div>
             </div>
         </div>
@@ -87,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 });
 
-// PWA Install Script (Works on Live Server / HTTPS)
+// PWA Install Logic with Instant Modal Fallback
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
@@ -101,17 +119,26 @@ function installApp() {
             deferredPrompt = null;
         });
     } else {
-        alert('యాప్ ఇన్‌స్టాల్ చేయడానికి మీ బ్రౌజర్ మెనూ (...) నుండి "Add to Home screen" లేదా "Install App" సెలెక్ట్ చేయండి!');
+        // If browser blocks automatic prompt, show friendly guide modal
+        document.getElementById('installModal').style.display = 'flex';
     }
+}
+
+function closeInstallModal() {
+    document.getElementById('installModal').style.display = 'none';
 }
 
 function openModal() { document.getElementById('contactModal').style.display = 'flex'; }
 function closeModal() { document.getElementById('contactModal').style.display = 'none'; }
+
 window.onclick = function(event) {
-    let modal = document.getElementById('contactModal');
-    if (event.target == modal) { modal.style.display = 'none'; }
+    let contactModal = document.getElementById('contactModal');
+    let installModal = document.getElementById('installModal');
+    if (event.target == contactModal) { contactModal.style.display = 'none'; }
+    if (event.target == installModal) { installModal.style.display = 'none'; }
 }
-// Register Service Worker for PWA
+
+// Service Worker Registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
