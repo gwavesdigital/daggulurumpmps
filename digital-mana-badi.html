@@ -9,238 +9,194 @@
     <meta name="theme-color" content="#2E4F2F">
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            background-color: #f4f7f6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding-bottom: 60px;
-            color: #333;
-        }
-        .page-banner {
-            background: linear-gradient(135deg, #1b4332, #2d6a4f, #40916c);
-            color: #ffffff;
-            text-align: center;
-            padding: 45px 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-        .page-banner h2 {
-            margin: 0 0 10px 0;
-            font-size: 32px;
-            letter-spacing: 0.5px;
-            font-weight: 700;
-        }
-        .page-banner p {
-            margin: 0;
-            font-size: 18px;
-            opacity: 0.95;
-            font-weight: 400;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 35px auto;
+        /* అదనపు ప్రీమియం డేటా ప్రెజెంటేషన్ స్టైల్స్ */
+        .premium-container {
+            max-width: 850px;
+            margin: 40px auto;
             padding: 0 20px;
         }
-        .intro-card {
-            background: linear-gradient(135deg, #ffffff, #f9fbfb);
-            border-radius: 16px;
+
+        .data-card {
+            background: linear-gradient(145deg, #ffffff, #f4f9f5);
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-            border-left: 6px solid #2d6a4f;
-            font-size: 17px;
-            line-height: 1.8;
-            color: #2c3e50;
-        }
-        .content-box {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        .content-box h3 {
-            color: #1b4332;
-            font-size: 24px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 15px;
-            margin-top: 0;
+            box-shadow: 0 10px 30px rgba(14, 123, 62, 0.08);
+            border: 1px solid rgba(14, 123, 62, 0.12);
             margin-bottom: 25px;
-            font-weight: 700;
+            position: relative;
+            overflow: hidden;
         }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+
+        .data-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0E7B3E, #F4C430);
         }
-        .feature-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 25px;
-            transition: all 0.3s ease;
-        }
-        .feature-card:hover {
-            background: #ffffff;
-            border-color: #2d6a4f;
-            box-shadow: 0 12px 30px rgba(45, 106, 79, 0.12);
-            transform: translateY(-5px);
-        }
-        .card-header {
+
+        .data-card h3 {
+            color: #084C27;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 12px;
+            border-bottom: 2px solid rgba(244, 196, 48, 0.4);
+            padding-bottom: 12px;
         }
-        .card-icon {
-            font-size: 34px;
-            background: #e8f5e9;
-            padding: 12px;
-            border-radius: 12px;
-            line-height: 1;
+
+        .feature-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
-        .card-header h4 {
-            margin: 0;
-            color: #1b4332;
+
+        .sub-feature-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 22px;
+            border: 1px solid rgba(14, 123, 62, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sub-feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(14, 123, 62, 0.12);
+            border-color: rgba(14, 123, 62, 0.3);
+        }
+
+        .sub-feature-card h4 {
+            margin: 0 0 12px 0;
+            color: #0E7B3E;
             font-size: 18px;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .feature-details {
-            margin: 0;
-            padding-left: 0;
-            list-style: none;
-        }
-        .feature-details li {
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #4a5568;
-            line-height: 1.6;
-            position: relative;
-            padding-left: 18px;
-        }
-        .feature-details li::before {
-            content: "•";
-            color: #2d6a4f;
-            font-weight: bold;
-            font-size: 18px;
-            position: absolute;
-            left: 0;
-            top: -1px;
-        }
-        .feature-details li strong {
-            color: #2d3748;
-        }
-        .original-p {
-            font-size: 16px;
-            color: #2d3748;
+
+        .sub-feature-card p {
+            margin: 10px 0;
+            font-size: 15px;
+            color: #3A4A42;
             line-height: 1.7;
-            margin: 15px 0;
+        }
+
+        .highlight-pill-box {
+            background: linear-gradient(135deg, #FFF8E1, #FFF3CD);
+            border: 1px solid rgba(244, 196, 48, 0.6);
+            border-radius: 16px;
+            padding: 22px 25px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            color: #594500;
+            box-shadow: 0 6px 20px rgba(244, 196, 48, 0.15);
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .bullet-point-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            background: #f8fafc;
-            padding: 15px 18px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
+            gap: 14px;
+            background: #fcfdfc;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(14, 123, 62, 0.08);
         }
-        .conclusion-card {
-            background: linear-gradient(135deg, #1b4332, #2d6a4f);
-            color: #ffffff;
-            border-radius: 14px;
-            padding: 25px 30px;
-            margin-top: 30px;
-            font-size: 18px;
-            text-align: center;
-            font-weight: 500;
-            box-shadow: 0 8px 25px rgba(27, 67, 50, 0.2);
-            line-height: 1.6;
+
+        .bullet-icon {
+            font-size: 20px;
+            background: #e8f5e9;
+            padding: 8px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- బ్యానర్ (ఒకసారే కనిపిస్తుంది) -->
     <div class="page-banner">
         <h2>డిజిటల్ మన బడి ఇనిషియేటివ్</h2>
         <p>సాంకేతికతతో కూడిన ఆధునిక విద్యా విధానం</p>
     </div>
 
-    <div class="container">
-        
-        <div class="intro-card">
-            ఆంధ్రప్రదేశ్ ప్రభుత్వ పాఠశాలలు, ముఖ్యంగా <strong>మోడల్ ప్రైమరీ స్కూల్స్ (Model Primary Schools)</strong> మరియు ఉన్నత పాఠశాలల్లో డిజిటలైజేషన్ (Digitalization) ప్రక్రియ విద్యారూపాన్ని పూర్తిగా మార్చివేస్తోంది. కార్పొరేట్ పాఠశాలలకు దీటుగా ప్రభుత్వ బడులను తీర్చిదిద్దడంలో డిజిటల్ విప్లవం కీలక పాత్ర పోషిస్తోంది.
+    <div class="premium-container">
+        <!-- పరిచయం -->
+        <div class="data-card">
+            <h3>🏫 డిజిటల్ విప్లవం - పరిచయం</h3>
+            <p style="color: #3A4A42; font-size: 16px; line-height: 1.8; margin: 0;">
+                ఆంధ్రప్రదేశ్ ప్రభుత్వ పాఠశాలలు, ముఖ్యంగా మోడల్ ప్రైమరీ స్కూల్స్ (Model Primary Schools) మరియు ఉన్నత పాఠశాలల్లో డిజిటలైజేషన్ (Digitalization) ప్రక్రియ విద్యారూపాన్ని పూర్తిగా మార్చివేస్తోంది. కార్పొరేట్ పాఠశాలలకు దీటుగా ప్రభుత్వ బడులను తీర్చిదిద్దడంలో డిజిటల్ విప్లవం కీలక పాత్ర పోషిస్తోంది.
+            </p>
         </div>
 
-        <div class="content-box">
-            <h3>డిజిటల్ విద్య ప్రత్యేకతలు</h3>
-            <div class="original-p">
-                <span style="font-size: 24px;">💻</span>
-                <div>విద్యార్థులలో సాంకేతిక నైపుణ్యాలను పెంపొందించడానికి స్మార్ట్ తరగతులు నిర్వహించబడుతున్నాయి.</div>
+        <!-- డిజిటల్ విద్య ప్రత్యేకతలు -->
+        <div class="data-card">
+            <h3>✨ డిజిటల్ విద్య ప్రత్యేకతలు</h3>
+            <div class="bullet-point-item">
+                <div class="bullet-icon">💻</div>
+                <div>
+                    <strong style="color: #084C27; font-size: 16px;">స్మార్ట్ తరగతులు</strong>
+                    <p style="margin: 4px 0 0 0; color: #3A4A42; font-size: 15px;">విద్యార్థులలో సాంకేతిక నైపుణ్యాలను పెంపొందించడానికి స్మార్ట్ తరగతులు నిర్వహించబడుతున్నాయి.</p>
+                </div>
             </div>
-            <div class="original-p">
-                <span style="font-size: 24px;">📱</span>
-                <div>ఈ వెబ్‌‌సైట్ మరియు డిజిటల్ డైరీ ద్వారా తల్లిదండ్రులు ఎప్పటికప్పుడు పాఠశాల సమాచారాన్ని తెలుసుకోవచ్చు.</div>
+            <div class="bullet-point-item" style="margin-bottom: 0;">
+                <div class="bullet-icon">📱</div>
+                <div>
+                    <strong style="color: #084C27; font-size: 16px;">డిజిటల్ డైరీ & వెబ్‌సైట్</strong>
+                    <p style="margin: 4px 0 0 0; color: #3A4A42; font-size: 15px;">ఈ వెబ్‌‌సైట్ మరియు డిజిటల్ డైరీ ద్వారా తల్లిదండ్రులు ఎప్పటికప్పుడు పాఠశాల సమాచారాన్ని తెలుసుకోవచ్చు.</p>
+                </div>
             </div>
         </div>
 
-        <div class="content-box">
-            <h3>ఏపీ మోడల్ ప్రైమరీ స్కూల్ - డిజిటల్ విప్లవం అదనపు ముఖ్యాంశాలు</h3>
+        <!-- అదనపు ముఖ్యాంశాలు -->
+        <div class="data-card">
+            <h3>🚀 ఏపీ మోడల్ ప్రైమరీ స్కూల్ - డిజిటల్ విప్లవం అదనపు ముఖ్యాంశాలు</h3>
             
-            <div class="features-grid">
-                
-                <div class="feature-card">
-                    <div class="card-header">
-                        <div class="card-icon">📺</div>
-                        <h4>ఇంటరాక్టివ్ ఫ్లాట్ ప్యానెల్స్ & స్మార్ట్ టీవీలు</h4>
-                    </div>
-                    <ul class="feature-details">
-                        <li><strong>ప్రాథమిక పాఠశాలల్లో స్మార్ట్ స్క్రీన్లు:</strong> ప్రతి 60 మంది పిల్లలకు ఒకటి చొప్పున స్మార్ట్ టీవీలు మరియు ఉన్నత తరగతులకు IFPలు ఏర్పాటు చేశారు.</li>
-                        <li><strong>డిజిటల్ కంటెంట్:</strong> యానిమేటెడ్ వీడియోలు, త్రీడీ గ్రాఫిక్స్ ద్వారా బోధన వల్ల క్లిష్టమైన భావనలు సులభంగా అర్థమవుతున్నాయి.</li>
-                    </ul>
+            <div class="feature-grid-modern">
+                <div class="sub-feature-card">
+                    <h4>📺 ఇంటరాక్టివ్ ప్యానెల్స్</h4>
+                    <p><strong>స్మార్ట్ స్క్రీన్లు:</strong> ప్రతి 60 మంది పిల్లలకు ఒకటి చొప్పున స్మార్ట్ టీవీలు మరియు ఉన్నత తరగతులకు IFPలు ఏర్పాటు చేశారు.</p>
+                    <p><strong>డిజిటల్ కంటెంట్:</strong> యానిమేటెడ్ వీడియోలు, త్రీడీ గ్రాఫిక్స్ ద్వారా బోధన వల్ల క్లిష్టమైన భావనలు సులభంగా అర్థమవుతున్నాయి.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="card-header">
-                        <div class="card-icon">📚</div>
-                        <h4>బైజూస్ (BYJU'S) డిజిటల్ కంటెంట్ & ట్యాబ్స్</h4>
-                    </div>
-                    <ul class="feature-details">
-                        <li><strong>ఉచిత ట్యాబ్ పంపిణీ:</strong> 8వ తరగతి విద్యార్థులతో పాటు అర్హత ఉన్నవారికి ప్రీ-లోడెడ్ బైజూస్ కంటెంట్‌తో ట్యాబ్‌లు అందజేయబడ్డాయి.</li>
-                        <li><strong>ద్విభాషా పాఠ్యపుస్తకాలు:</strong> తెలుగు మరియు ఇంగ్లీష్ మీడియం కంటెంట్ అందుబాటులో ఉండటం వల్ల ఇంగ్లీష్ పై పట్టు పెరుగుతోంది.</li>
-                    </ul>
+                <div class="sub-feature-card">
+                    <h4>📚 బైజూస్ (BYJU'S) ట్యాబ్స్</h4>
+                    <p><strong>ఉచిత ట్యాబ్ పంపిణీ:</strong> 8వ తరగతి విద్యార్థులతో పాటు అర్హత ఉన్నవారికి ప్రీ-లోడెడ్ బైజూస్ కంటెంట్‌తో ట్యాబ్‌లు అందజేయబడ్డాయి.</p>
+                    <p><strong>ద్విభాషా పాఠ్యపుస్తకాలు:</strong> తెలుగు మరియు ఇంగ్లీష్ మీడియం కంటెంట్ అందుబాటులో ఉండటం వల్ల ఇంగ్లీష్ పై పట్టు పెరుగుతోంది.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="card-header">
-                        <div class="card-icon">🏫</div>
-                        <h4>నాడు-నేడు (Nadu-Nedu) మౌలిక వసతులు</h4>
-                    </div>
-                    <ul class="feature-details">
-                        <li><strong>అధునాతన గదులు:</strong> గ్రీన్ చాక్ బోర్డులతో పాటు ఎలక్ట్రికల్ వైరింగ్, ప్రత్యేక ఎం.డి.ఎఫ్ బోర్డులు, రౌటర్లు ఏర్పాటు చేయబడ్డాయి.</li>
-                        <li><strong>అంతర్జాల సదుపాయం:</strong> హై-స్పీడ్ బ్రాడ్‌బ్యాండ్ ఇంటర్నెట్ (AP FiberNet) సౌకర్యం కల్పించబడింది.</li>
-                    </ul>
+                <div class="sub-feature-card">
+                    <h4>🏫 నాడు-నేడు మౌలిక వసతులు</h4>
+                    <p><strong>అధునాతన గదులు:</strong> గ్రీన్ చాక్ బోర్డులతో పాటు ఎలక్ట్రికల్ వైరింగ్, ప్రత్యేక ఎం.డి.ఎఫ్ బోర్డులు, రౌటర్లు ఏర్పాటు చేయబడ్డాయి.</p>
+                    <p><strong>అంతర్జాల సదుపాయం:</strong> హై-స్పీడ్ బ్రాడ్‌బ్యాండ్ ఇంటర్నెట్ (AP FiberNet) సౌకర్యం కల్పించబడింది.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="card-header">
-                        <div class="card-icon">📊</div>
-                        <h4>లెర్నింగ్ మేనేజ్‌మెంట్ సిస్టమ్ (LMS) & యాప్స్</h4>
-                    </div>
-                    <ul class="feature-details">
-                        <li><strong>తల్లిదండ్రుల పర్యవేక్షణ:</strong> విద్యార్థుల హాజరు, అభ్యసన ప్రగతిని పరిశీలించడానికి ప్రత్యేక యాప్స్ అందుబాటులో ఉన్నాయి.</li>
-                        <li><strong>నిరంతర మదింపు:</strong> ఆన్‌‌‌‌లైన్ క్విజ్‌లు, డిజిటల్ అసెస్‌మెంట్ల ద్వారా సామర్థ్యాలను అంచనా వేసి ప్రత్యేక శ్రద్ధ చూపబడుతోంది.</li>
-                    </ul>
+                <div class="sub-feature-card">
+                    <h4>📊 LMS & డిజిటల్ యాప్స్</h4>
+                    <p><strong>తల్లిదండ్రుల పర్యవేక్షణ:</strong> విద్యార్థుల హాజరు, అభ్యసన ప్రగతిని పరిశీలించడానికి ప్రత్యేక యాప్స్ అందుబాటులో ఉన్నాయి.</p>
+                    <p><strong>నిరంతర మదింపు:</strong> ఆన్‌‌లైన్ క్విజ్‌లు, డిజిటల్ అసెస్‌మెంట్ల ద్వారా సామర్థ్యాలను అంచనా వేసి ప్రత్యేక శ్రద్ధ చూపబడుతోంది.</p>
                 </div>
-
             </div>
-
-            <div class="conclusion-card">
-                🚀 ఈ డిజిటల్ విద్యావిధానం ద్వారా ప్రభుత్వ పాఠశాలల విద్యార్థులు కూడా సాంకేతిక రంగంలో పోటీపడేలా తయారవుతున్నారు.
-            </div>
-
         </div>
 
+        <!-- ముగింపు ప్రకటన -->
+        <div class="highlight-pill-box">
+            <span>🚀</span>
+            <span>ఈ డిజిటల్ విద్యావిధానం ద్వారా ప్రభుత్వ పాఠశాలల విద్యార్థులు కూడా సాంకేతిక రంగంలో పోటీపడేలా తయారవుతున్నారు.</span>
+        </div>
     </div>
 
     <script src="components.js"></script>
