@@ -7,23 +7,287 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2E4F2F">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #2E4F2F;
+            --primary-dark: #1E331F;
+            --primary-light: #E8F0E8;
+            --accent: #D4AF37;
+            --text-dark: #2C3E50;
+            --text-light: #6C7A89;
+            --bg-color: #F8FAF9;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(46, 79, 47, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Header Styles */
+        header.site-header, .page-banner {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--white), var(--accent));
+        }
+
+        .page-banner h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .page-banner p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Content Box & Scheme Cards */
+        .content-box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(46, 79, 47, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-box h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Individual Scheme Card Styling */
+        .scheme-card {
+            background: var(--bg-color);
+            border-left: 5px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .scheme-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 79, 47, 0.12);
+            background: var(--white);
+        }
+
+        .scheme-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scheme-desc {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .scheme-details {
+            background: var(--primary-light);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        /* Menu Table Styling */
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .menu-table th, .menu-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .menu-table th {
+            background-color: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .menu-table tr:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Footer Styles */
+        footer.site-footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer.site-footer p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-banner h2 { font-size: 1.8rem; }
+            .content-box { padding: 1.5rem; }
+            .menu-table th, .menu-table td { padding: 10px; font-size: 0.9rem; }
+        }
+    </style>
 </head>
 <body>
 
     <div class="page-banner">
         <h2>ప్రభుత్వ సంక్షేమ పథకాలు</h2>
-        <p>విద్యార్థులకు ప్రభుత్వం ద్వారా అందుతున్న ప్రయోజనాలు</p>
+        <p>మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్, దగ్గులూరు - విద్యార్థులకు ప్రభుత్వం ద్వారా అందుతున్న ప్రయోజనాలు</p>
     </div>
 
     <div class="container">
+        
+        <!-- Primary Schemes Section -->
         <div class="content-box">
-            <h3>ప్రధాన ప్రభుత్వ పథకాలు</h3>
-            <p>🎒 <strong>సర్వేపల్లి రాధాకృష్ణన్ విద్య మిత్ర :</strong> పాఠశాల పునఃప్రారంభ రోజునే విద్యార్థులకు యూనిఫామ్స్, షూస్, పాఠ్యపుస్తకాలు, నోట్‌బుక్స్ మరియు స్కూల్ బ్యాగ్ ఉచితంగా అందజేయబడుతున్నాయి.</p>
-            <p>🍲 <strong>మధ్యాహ్న భోజన పథకం:</strong> విద్యార్థులకు పౌష్టికాహారంతో కూడిన రుచికరమైన మధ్యాహ్న భోజనం ప్రతిరోజూ అందించబడుతుంది.</p>
-            <p>💰 <strong>తల్లికి వందనం :</strong> విద్యార్థుల తల్లుల ఖాతాలలో ప్రభుత్వ ఆర్థిక సహాయం జమ చేయబడుతోంది.</p>
+            <h3>🎒 ప్రధాన ప్రభుత్వ విద్యా పథకాలు</h3>
+            
+            <div class="scheme-card">
+                <div class="scheme-title">🎒 సర్వేపల్లి రాధాకృష్ణన్ విద్య మిత్ర (విద్యార్థి మిత్ర)</div>
+                <p class="scheme-desc">పాఠశాల పునఃప్రారంభ రోజునే విద్యార్థులపై ఎలాంటి ఆర్థిక భారం పడకుండా ఉచితంగా పూర్తి విద్యార్థి కిట్‌ను అందజేయబడుతోంది.</p>
+                <div class="scheme-details">
+                    <strong>అందే వస్తువులు:</strong> రెండు జతల యూనిఫామ్ బట్టలు, పాఠ్యపుస్తకాలు, నోట్‌బుక్స్, స్కూల్ బ్యాగ్, ఒక జత షూస్, రెండు జతల సాక్సులు మరియు బెల్ట్.
+                </div>
+            </div>
+
+            <div class="scheme-card">
+                <div class="scheme-title">💰 తల్లికి వందనం</div>
+                <p class="scheme-desc">బడికి వెళ్లే ప్రతి విద్యార్థి చదువును ప్రోత్సహించడానికి మరియు తల్లులకు ఆర్థిక భరోసా కల్పించడానికి అమలు చేయబడుతున్న పథకం.</p>
+                <div class="scheme-details">
+                    <strong>ప్రయోజనం:</strong> 1వ తరగతి నుండి ఇంటర్మీడియట్ వరకు ప్రభుత్వ, ఎయిడెడ్ లేదా ప్రైవేట్ పాఠశాలల్లో చదువుతున్న విద్యార్థుల తల్లుల బ్యాంకు ఖాతాలకు ప్రతి ఏటా <strong>రూ. 15,000/-</strong> ఆర్థిక సహాయం జమ చేయబడుతుంది.
+                </div>
+            </div>
+
+            <div class="scheme-card">
+                <div class="scheme-title">🤲 మిషన్ వాత్సల్య</div>
+                <p class="scheme-desc">తల్లిదండ్రులను కోల్పోయిన అనాథ పిల్లలు మరియు అత్యంత నిరాదరణకు గురైన సంరక్షణ అవసరమైన చిన్నారుల కోసం.</p>
+                <div class="scheme-details">
+                    <strong>ప్రయోజనం:</strong> అర్హులైన పిల్లలకు ప్రతి నెలా <strong>రూ. 4,000/-</strong> చొప్పున (ప్రతి ఆరు నెలలకు ఒకసారి రూ. 24,000/-) 18 సంవత్సరాలు నిండే వరకు నేరుగా వారి ఖాతాలలో జమ చేయబడుతుంది.
+                </div>
+            </div>
         </div>
+
+        <!-- Mid Day Meal & Menu Section -->
+        <div class="content-box">
+            <h3>🍲 "డొక్కా సీతమ్మ" మధ్యాహ్న బడి భోజనం & వీక్లీ మెనూ</h3>
+            <p class="scheme-desc" style="margin-bottom: 1rem;">ప్రాథమిక పాఠశాల విద్యార్థుల్లో పౌష్టికాహార లోపాన్ని నివారించడానికి మరియు హాజరు శేషం పెంచడానికి ప్రతిరోజూ రుచికరమైన, పౌష్టికాహారంతో కూడిన మధ్యాహ్న భోజనం అందించబడుతుంది (జోన్-2 మెనూ).</p>
+            
+            <table class="menu-table">
+                <thead>
+                    <tr>
+                        <th>వారం (Day)</th>
+                        <th>మధ్యాహ్న భోజన మెనూ వివరాలు (Menu)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>సోమవారం</strong></td>
+                        <td>అన్నం, ఆకుకూరతో పప్పు, గుడ్డు ఫ్రై మరియు చిక్కీ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>మంగళవారం</strong></td>
+                        <td>పులిహోర, చట్నీ, ఉడికించిన గుడ్డు మరియు రాగిజావ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>బుధవారం</strong></td>
+                        <td>అన్నం, కూరగాయల కూర, గుడ్డు ఫ్రై మరియు చిక్కీ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>గురువారం</strong></td>
+                        <td>వెజిటెబుల్ రైస్/పులావ్, బంగాళదుంప కుర్మా, ఉడికించిన గుడ్డు మరియు రాగిజావ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>శుక్రవారం</strong></td>
+                        <td>అన్నం, ఆకుకూరలతో పప్పు, గుడ్డు ఫ్రై మరియు చిక్కీ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>శనివారం</strong></td>
+                        <td>అన్నం, కూరగాయల కూర, రసం, స్వీట్ పొంగల్ మరియు రాగిజావ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Infrastructure Section -->
+        <div class="content-box">
+            <h3>🏫 పాఠశాలల మౌలిక వసతుల అభివృద్ధి (Nadu - Nedu)</h3>
+            <div class="scheme-card">
+                <div class="scheme-title">✨ కార్పొరేట్ దీటుగా ప్రభుత్వ బడులు</div>
+                <p class="scheme-desc">పాఠశాలల రూపురేఖలు మార్చడానికి మరియు విద్యార్థులకు అత్యుత్తమ వాతావరణం కల్పించడానికి ప్రభుత్వం ఈ క్రింది సదుపాయాలను కల్పిస్తోంది:</p>
+                <div class="scheme-details">
+                    • మెరుగైన తాగునీటి సౌకర్యం మరియు విద్యుద్దీకరణ<br>
+                    • ఆధునిక మరుగుదొడ్ల నిర్మాణం మరియు పరిశుభ్రత నిర్వహణ<br>
+                    • ఆకర్షణీయమైన రంగులు, సున్నాలు మరియు గ్రీన్ చాక్ బోర్డుల ఏర్పాటు<br>
+                    • డిజిటల్ విద్య కోసం స్మార్ట్ క్లాస్‌రూమ్స్ మరియు లెర్నింగ్ టూల్స్
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <footer class="site-footer">
+        <p>© 2026 మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్, దగ్గులూరు. সর্বహక్కులు భద్రపరచబడినవి.</p>
+    </footer>
 
     <script src="components.js"></script>
 </body>
