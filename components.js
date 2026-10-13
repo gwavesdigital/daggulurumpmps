@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check if the current page is index.html (Home Page)
     const isHomePage = window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/") || window.location.pathname === "";
 
-    // If it's not home page, show the Home button in mobile controls. If it is home page, hide it.
+    // Show the Home button in mobile controls on all pages EXCEPT the home page.
     const homeBtnDisplay = isHomePage ? 'none' : 'inline-flex';
 
     const headerHTML = `
@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 </a>
 
                 <div class="mobile-header-controls">
-                    <!-- Home button visibility controlled dynamically based on page -->
                     <a href="index.html" class="premium-home-btn" title="Home" style="display: ${homeBtnDisplay};">🏠 హోమ్</a>
                     <div class="menu-toggle" onclick="toggleMenu()">
                         <span></span>
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="footer-section">
                     <h3>పాఠశాల చిరునామా</h3>
                     <p>📍 <strong>మండల పరిషత్ మోడల్ ప్రైమరీ స్కూల్ నెం. 1</strong></p>
-                    <p>దగ్గులూరు, పాలకొల్లు మండలం, పశ్చిమ గోదావరి జిల్లా - 534260</p>
+                    <p>దగ్గులూరు, పాలకొల్లు మండలం, పశ్చిమ గోదావరి జిల్లా - 534250 </p>
                     <p>📞 హెడ్ మాస్టర్: <strong>9666766688</strong></p>
                 </div>
                 <div class="footer-section">
@@ -100,6 +99,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
     document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+    // --- EXACT FILENAME ACTIVE TAB HIGHLIGHTER ---
+    const currentPath = window.location.pathname.toLowerCase();
+    let currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+    
+    if (currentPage === "" || currentPath.endsWith("/")) {
+        currentPage = "index.html";
+    }
+
+    const navLinks = document.querySelectorAll('#navLinks a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href').toLowerCase();
+        
+        link.classList.remove('active-tab');
+
+        if (href === currentPage) {
+            link.classList.add('active-tab');
+        }
+    });
 });
 
 function toggleMenu() {
