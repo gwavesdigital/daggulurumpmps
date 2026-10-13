@@ -100,22 +100,20 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 
-    // --- EXACT FILENAME ACTIVE TAB HIGHLIGHTER ---
-    const currentPath = window.location.pathname.toLowerCase();
-    let currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+    // --- OLD REPO EXACT MATCH LOGIC ---
+    const filename = window.location.pathname.split("/").pop().toLowerCase();
+    const navLinks = document.querySelectorAll('.nav-links a');
     
-    if (currentPage === "" || currentPath.endsWith("/")) {
-        currentPage = "index.html";
-    }
-
-    const navLinks = document.querySelectorAll('#navLinks a');
     navLinks.forEach(link => {
-        const href = link.getAttribute('href').toLowerCase();
-        
-        link.classList.remove('active-tab');
-
-        if (href === currentPage) {
-            link.classList.add('active-tab');
+        const linkHref = link.getAttribute('href').toLowerCase();
+        if (filename === "" || filename === "/") {
+            if (linkHref === "index.html") {
+                link.classList.add('active-tab');
+            }
+        } else {
+            if (linkHref === filename) {
+                link.classList.add('active-tab');
+            }
         }
     });
 });
